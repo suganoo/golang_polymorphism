@@ -6,32 +6,34 @@ type MainInterface interface {
 	call(string, string) string
 }
 
-type SampleFunc func(string, string) string
-
-func (s SampleFunc) call(x, y string) string {
-	return s(x, y)
+type Normal struct {
 }
 
-func normalFunc(x, y string) (str string){
+func (n *Normal)call(x, y string) (str string){
 	str = fmt.Sprintf("%v , %v", x, y)
 	return
 }
-func changeFunc(x, y string) (str string){
+
+type Change struct {
+}
+
+func (c *Change)call(x, y string) (str string){
 	str = fmt.Sprintf("change %v , %v", y, x)
 	return
 }
+
 func main() {
 	var m MainInterface
 
 	fmt.Println("----- Sample 1 -----")
-	var sf1 = SampleFunc(normalFunc)
+	var n = Normal{}
 
-	m = sf1
+	m = n
 	fmt.Println(m.call("Hello", "World"))
 
 	fmt.Println("----- Sample 2 -----")
-	var sf2 = SampleFunc(changeFunc)
+	var c = Change{}
 
-	m = sf2
+	m = c
 	fmt.Println(m.call("Hello", "World"))
 }

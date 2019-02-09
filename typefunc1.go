@@ -26,7 +26,7 @@ func main() {
 
 	fmt.Println("----- Sample 2 -----")
 	var sf2 = SampleFunc(func(x, y string) (str string){
-		str = fmt.Sprintf("Yeeeaaa %v , %v", x, y)
+		str = fmt.Sprintf("Change! %v , %v", y, x)
 		return
 	})
 

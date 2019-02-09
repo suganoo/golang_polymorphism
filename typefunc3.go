@@ -16,8 +16,8 @@ func normalFunc(x, y string) (str string){
 	str = fmt.Sprintf("%v , %v", x, y)
 	return
 }
-func yeeeaaaFunc(x, y string) (str string){
-	str = fmt.Sprintf("Yeeeaaa %v , %v", x, y)
+func changeFunc(x, y string) (str string){
+	str = fmt.Sprintf("Change %v , %v", y, x)
 	return
 }
 
@@ -27,7 +27,7 @@ func funcProducer(i int) (m SampleFunc) {
 	case 1:
 		m = SampleFunc(normalFunc)
 	case 2:
-		m = SampleFunc(yeeeaaaFunc)
+		m = SampleFunc(changeFunc)
 	default:
 		m = nil
 	}
