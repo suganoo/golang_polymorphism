@@ -6,6 +6,10 @@ type MainInterface interface {
 	call(string, string) string
 }
 
+type MainCaller struct {
+	MainInterface
+}
+
 type SampleFunc func(string, string) string
 
 func (s SampleFunc) call(x, y string) string {
@@ -21,17 +25,17 @@ func changeFunc(x, y string) (str string){
 	return
 }
 func main() {
-	var m MainInterface
+	var m MainCaller
 
 	fmt.Println("----- Sample 1 -----")
 	var sf1 = SampleFunc(normalFunc)
 
-	m = sf1
+	m.MainInterface = sf1
 	fmt.Println(m.call("Hello", "World"))
 
 	fmt.Println("----- Sample 2 -----")
 	var sf2 = SampleFunc(changeFunc)
 
-	m = sf2
+	m.MainInterface = sf2
 	fmt.Println(m.call("Hello", "World"))
 }
